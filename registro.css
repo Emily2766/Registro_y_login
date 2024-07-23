@@ -1,0 +1,147 @@
+html {
+    background-color: #ffffff;
+  }
+  body {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 0 10px 10px 0;
+  }
+  
+  nav {
+    height: 60px;
+    background-color: rgba(249, 214, 240, 0);
+    text-align: center;
+    padding: 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: inline-block;
+    padding: 18px;
+  }
+  
+  nav ul li {
+    float: left;
+  }
+  
+  nav ul li a {
+    color: #364a3b;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 6px;
+  }
+  
+  nav ul li a:hover {
+    color: #000000;
+  }
+  .container_1 {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    
+  }
+  .imagen_tarjeta {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    
+  }
+  #texto_tarjeta{
+  font-size: 2rem;
+  position: relative;
+  color: #fcfafa;
+  font-family: "Migra";
+  text-align:left;
+  padding-left: 300px;
+  }
+  .formulario_registro {
+    box-shadow: 0 0 10px rgb(230, 4, 4);
+    width: 100%;
+    height: 430px;
+    display: flex;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-color: rgb(252, 232, 248);
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+       
+  .formulario_usuariol {
+    width: 60%;
+    height: 400px;
+    position: relative; /* Cambiado de absolute a relative */
+    flex-direction: column;
+    margin-top: 30px;
+    text-align: right;  
+    font-family: "Migra";
+    font-size: 1rem;
+    margin-right: 0; /* Elimina margen a la izquierda */
+    justify-content: flex-end;
+  }
+  
+#sexo{
+  width: 23%;
+  height: 20px;
+  text-align: right;
+  font-size: 1rem;
+  font-family: "Migra";
+  outline: none;
+  flex-direction: column;
+}
+
+
+.boton_registro{
+  width: 13.5%;
+  height: 30px;
+  display: flex;
+  position: absolute;
+  margin-left: 600px;
+  text-align:center;
+  font-family: "Migra";
+  background-color:#364a3b;
+  font-size: 1rem;
+  color: #fafafa;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+.boton_registro:hover,
+.boton_registro:focus {
+    color:#364a3b;
+    background-color: #d9f8e8;
+}
+
+.boton_volver {
+  padding: 10px 20px; /* Ajusta el relleno del botón */
+  background-color:#364a3b; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  text-decoration: none; /* Quita el subrayado del enlace */
+  border: none; /* Quita el borde */
+  border-radius: 5px; /* Añade esquinas redondeadas */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-family: "Migra";
+  margin-left: 480px;
+}
+
+.boton_volver:hover {
+  background-color: #f3f169; /* Cambia el color de fondo al pasar el cursor */
+  color: #000000;
+}
+.boton_citas {
+  padding: 10px 20px; /* Ajusta el relleno del botón */
+  background-color:#f3f169; /* Color de fondo */
+  color: #0d0d0d; /* Color del texto */
+  text-decoration: none; /* Quita el subrayado del enlace */
+  border: none; /* Quita el borde */
+  border-radius: 5px; /* Añade esquinas redondeadas */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-family: "Migra";
+}
+
+.boton_citas:hover {
+  background-color: #364a3b; /* Cambia el color de fondo al pasar el cursor */
+  color: #f3f169;
+}

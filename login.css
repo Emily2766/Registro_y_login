@@ -1,0 +1,211 @@
+html {
+  background-color: #ffffff;
+}
+body {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 0 10px 10px 0;
+}
+
+nav {
+  height: 60px;
+  background-color: rgb(248, 214, 240);
+  text-align: center;
+  padding: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: inline-block;
+  padding: 18px;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li a {
+  color: #364a3b;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 6px;
+}
+
+nav ul li a:hover {
+  color: #000000;
+}
+/* Estilo base para mensajes flotantes */
+.mensaje-flotante {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 300px; /* Ancho del mensaje */
+  text-align: center;
+  display: none; /* Inicialmente oculto */
+}
+
+/* Estilo para mensaje de error */
+.mensaje-error {
+  background-color: #f44336; /* Rojo */
+  color: white;
+}
+
+/* Estilo para mensaje de éxito */
+.mensaje-exito {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+}
+
+
+.container_1 {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  display: flex;
+  margin-bottom: 50px;
+   }
+.citas{
+  width: 100%;
+  height: 100%;
+  
+}
+.imagen_citas {
+  width: 100%;
+  height: 100%;
+  position:relative;
+  
+ 
+}
+ 
+#texto_citas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  top: 0;
+  color: #ffffff;
+  font-family: "Migra";
+  text-align: left;
+  margin-left: 30px;
+}
+
+
+
+  
+  .login-container {
+    height: 100%;
+    width: 98%;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(230, 4, 4);
+    font-family: Georgia, "Migra", serif;
+   
+  }
+  .formulario {
+    width: 100%;
+    height: 100%;
+    border: 5px solid rgb(255, 255, 255);
+    place-items: center;
+    font-size: 1rem;
+    font-family: "Migra";
+    padding: 5px;
+    background-color: #ffe6fc;
+    text-align: center;
+  }
+  
+  .login-container h3 {
+    margin-bottom: 5px;
+    color:  #364a3b;
+    font-size: 1.5rem;
+  }
+  #user_type {
+    border: none;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 2px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 5px;
+    outline: none;
+  }
+  .login-container label {
+    display: block;
+    margin-bottom: 1px;
+    color: rgb(2, 0, 0);
+  }
+  
+  .login-container input {
+    border: none;
+    width: 40%;
+    height: 20px;
+    margin-bottom: 2px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  .login-container button {
+    color: rgb(250, 251, 248);
+    background: #e881f5;
+    padding: 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 20%;
+    font-size: 0.9rem;
+    font-family: "migra";
+  }
+  .login-container button:hover {
+    color:#364a3b;
+    background-color: #e7f0b5;
+  }
+ 
+  .login-container a {
+    color: #000000;
+    text-decoration: none;
+    margin-top: 2px;
+    display: inline-block;
+    font-size: 0.7rem;
+  }
+
+  .container_pie_pagina {
+    background:#364a3b;
+    height: 150px;
+    display: grid;
+    display: flex;
+    color: #fafafa;
+    font-family: "Migra";
+    text-align:left;
+    
+  }
+    .columnas {
+      width: 100%;
+      background: #364a3b;
+      display: grid;
+      padding-left: 10px;
+      padding-right: 10px;
+      
+    }
+  
+    .container_copyright {
+      background: #d9f8e8;
+      text-align: center;
+      font-size: 0.7rem;
+      font-family: "Times New Roman", Times, serif;
+      padding: 4px;
+      bottom: 0;
+      width: 99.4%;
+      height: 40px;
+      display: grid;
+      place-items: center;
+    }
+  
