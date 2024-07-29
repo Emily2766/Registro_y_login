@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 
 ini_set('display_errors', 1);
@@ -20,8 +22,7 @@ if ($conn->connect_error) {
 
 // Verificar si el usuario está actualmente autenticado
 if (isset($_SESSION['usuario_autenticado'])) {
-    // Redirigir al usuario al panel de administración si ya está autenticado
-    header('Location: login.php');
+    header('Location: usuario.php');  
     exit;
 }
 
@@ -30,30 +31,38 @@ $mensaje = '';
 
 // Verificar si se ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Obtener las credenciales del formulario
-    $usuario = $_POST['usuario'];
-    $contrasena = $_POST['contrasena'];
+    // Verificar si las claves existen en $_POST
+    if (isset($_POST['usuario']) && isset($_POST['contrasena'])) {
+        $usuario = $_POST['usuario'];
+        $contrasena = $_POST['contrasena'];
 
-    // Consultar la base de datos para verificar las credenciales
-    $sql = "SELECT * FROM Usuario WHERE usuario = '$usuario'";
-    $result = $conn->query($sql);
+        // Escapar los datos para evitar inyecciones SQL
+        $usuario = $conn->real_escape_string($usuario);
+        $contrasena = $conn->real_escape_string($contrasena);
 
-    if ($result && $result->num_rows > 0) {
-        // Usuario encontrado, verificar la contraseña
-        $usuarioData = $result->fetch_assoc();
-        if ($usuarioData['contrasena'] == $contrasena) {
-            // Las credenciales son válidas, iniciar sesión y redirigir al panel de administración
-            $_SESSION['usuario_autenticado'] = true;
-            $_SESSION['usuario'] = $usuario;
-            header('Location: index.php');
-            exit;
+        // Consultar la base de datos para verificar las credenciales
+        $sql = "SELECT * FROM Usuario WHERE usuario = '$usuario'";
+        $result = $conn->query($sql);
+
+        if ($result && $result->num_rows > 0) {
+            // Usuario encontrado, verificar la contraseña
+            $usuarioData = $result->fetch_assoc();
+            if (password_verify($contrasena, $usuarioData['contrasena'])) {
+                // Las credenciales son válidas, iniciar sesión y redirigir al panel de administración
+                $_SESSION['usuario_autenticado'] = true;
+                $_SESSION['usuario'] = $usuario;
+                header('Location: usuario.php');  // Cambiado de login.php a usuario.php
+                exit;
+            } else {
+                // Contraseña incorrecta
+                $mensaje = 'Contraseña incorrecta, intente de nuevo por favor.';
+            }
         } else {
-            // Contraseña incorrecta
-            $mensaje = 'Contraseña incorrecta, intente de nuevo por favor.';
+            // Usuario no encontrado
+            $mensaje = 'Usuario no encontrado';
         }
     } else {
-        // Usuario no encontrado
-        $mensaje = 'Usuario no encontrado';
+        $mensaje = 'Faltan campos en la solicitud.';
     }
 }
 
@@ -72,17 +81,13 @@ $conn->close();
         <ul>
             <li><i class="bi bi-list"></i></li>
             <li><a href="login.php">Login</a></li>
-       </ul>
+        </ul>
     </nav>
 
     <!-- Mostrar mensaje flotante si existe -->
     <?php
-    if (isset($_SESSION['mensaje'])) {
-        $tipoMensaje = isset($_SESSION['tipo_mensaje']) ? $_SESSION['tipo_mensaje'] : "error";
-        $claseMensaje = ($tipoMensaje == "error") ? "mensaje-error" : "mensaje-exito";
-        echo '<div id="mensaje-flotante" class="mensaje-flotante ' . $claseMensaje . '">' . $_SESSION['mensaje'] . '</div>';
-        unset($_SESSION['mensaje']); // Limpiar el mensaje después de mostrarlo
-        unset($_SESSION['tipo_mensaje']); // Limpiar el tipo de mensaje después de mostrarlo
+    if (!empty($mensaje)) {
+        echo '<div id="mensaje-flotante" class="mensaje-flotante mensaje-error">' . htmlspecialchars($mensaje) . '</div>';
     }
     ?>
 
@@ -98,7 +103,7 @@ $conn->close();
     <article class="login">
         <div class="login-container"><br>
             <div class="formulario">
-                <h2><b> INICIO  DE SESION</h2><br></b>
+                <h2><b> INICIO  DE SESION</b></h2><br>
                 <form action="login.php" method="post">
                     <label for="usuario"><i class="bi bi-person-fill"></i><b> Usuario</label></b>
                     <input type="text" id="username" name="usuario" required>
@@ -108,7 +113,7 @@ $conn->close();
                     <br><br>
                     <button type="submit" class="boton">Iniciar Sesión</button>
                     <br><br>
-                    <p><a href="registro.php"><b>Regístrate</a></p></b>
+                    <p><a href="registro.php"><b>Regístrate</a></b></p>
                 </form>
             </div>
         </div>
